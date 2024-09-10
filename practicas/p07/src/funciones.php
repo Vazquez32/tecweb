@@ -7,6 +7,8 @@ function esMultiplo($num) {
         echo '<h3>R= El número ' . $num . ' NO es múltiplo de 5 y 7.</h3>';
     }
 }
+
+// Función para generar secuencias de números aleatorios
 function generarSecuencia() {
     $matriz = [];  // Matriz para almacenar las secuencias
     $iteraciones = 0;  // Contador de iteraciones
@@ -33,13 +35,13 @@ function generarSecuencia() {
 
     // Mostrar la tabla
     echo '<table border="1" cellpadding="10" cellspacing="0" style="border-collapse: collapse; text-align: center;">';
-    echo '<thead><tr><th>Iteración</th><th>Número 1 (Impar)</th><th>Número 2 (Par)</th><th>Número 3 (Impar)</th></tr></thead>';
+    echo '<thead><th>Número 1 (Impar)</th><th>Número 2 (Par)</th><th>Número 3 (Impar)</th></tr></thead>';
     echo '<tbody>';
 
     // Iterar sobre la matriz para mostrar cada fila
     foreach ($matriz as $index => $fila) {
         echo '<tr>';
-        echo '<td>' . ($index + 1) . '</td>';  // Mostrar el número de iteración
+   
         echo '<td>' . $fila[0] . '</td>';
         echo '<td>' . $fila[1] . '</td>';
         echo '<td>' . $fila[2] . '</td>';
@@ -55,5 +57,31 @@ function generarSecuencia() {
     echo "<br><strong>$cantidad_numeros números obtenidos en $iteraciones iteraciones</strong>";
 }
 
+// Función con ciclo while para encontrar un múltiplo
+function encontrarMultiploWhile($multiplo) {
+    $numero_aleatorio = 0; // Inicializar variable para almacenar el número aleatorio
+    $intentos = 0; // Contador de intentos
 
+    // Ciclo while para encontrar un número aleatorio múltiplo del número dado
+    while ($numero_aleatorio % $multiplo != 0) {
+        $numero_aleatorio = rand(1, 999); // Generar número aleatorio entre 1 y 999
+        $intentos++;
+    }
+
+    return "Número aleatorio múltiplo de $multiplo encontrado: $numero_aleatorio<br>Se necesitaron $intentos intentos.";
+}
+
+// Función con ciclo do-while para encontrar un múltiplo
+function encontrarMultiploDoWhile($multiplo) {
+    $numero_aleatorio = 0; // Inicializar variable para almacenar el número aleatorio
+    $intentos = 0; // Contador de intentos
+
+    // Ciclo do-while para encontrar un número aleatorio múltiplo del número dado
+    do {
+        $numero_aleatorio = rand(1, 999); // Generar número aleatorio entre 1 y 999
+        $intentos++;
+    } while ($numero_aleatorio % $multiplo != 0);
+
+    return "Número aleatorio múltiplo de $multiplo encontrado: $numero_aleatorio<br>Se necesitaron $intentos intentos.";
+}
 ?>
