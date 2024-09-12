@@ -84,4 +84,15 @@ function encontrarMultiploDoWhile($multiplo) {
 
     return "Número aleatorio múltiplo de $multiplo encontrado: $numero_aleatorio<br>Se necesitaron $intentos intentos.";
 }
+
+
+//Ejercicio 4
+function generarArregloAscii() {
+    $arreglo = [];
+    for ($i = 97; $i <= 122; $i++) {
+        $arreglo[$i] = chr($i); // chr() convierte el código ASCII en un carácter
+    }
+    return $arreglo;
+}
+
 ?>

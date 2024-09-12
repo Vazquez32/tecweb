@@ -3,7 +3,7 @@
 include 'src/funciones.php';
 ?>
 
-<!DOCTYPE xhtml>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -75,6 +75,19 @@ include 'src/funciones.php';
         } else {
             echo "Por favor, ingresa un número válido.";
         }
+    }
+    ?>
+
+    <h2>Ejercicio 4</h2>
+    <p>Crear un arreglo cuyos índices van de 97 a 122 y cuyos valores son las letras de la ‘a’ a la ‘z’. Usa la función chr(n) para poner el valor en cada índice. Luego, mostrar el arreglo en una tabla XHTML.</p>
+
+    <?php
+    // Llamar a la función para generar el arreglo ASCII
+    $arregloAscii = generarArregloAscii();
+
+    // Mostrar el arreglo en el formato [índice] => valor
+    foreach ($arregloAscii as $key => $value) {
+        echo '[' . $key . '] => ' . $value . '<br>';
     }
     ?>
 
