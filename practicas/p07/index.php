@@ -91,5 +91,62 @@ include 'src/funciones.php';
     }
     ?>
 
+
+    <h2>Ejercicio 5</h2>
+    <p>Usar las variables $edad y $sexo en una instrucción if para identificar una persona de
+    sexo “femenino”, cuya edad oscile entre los 18 y 35 años y mostrar un mensaje de
+     bienvenida apropiado.</p>
+
+     <form action="" method="post">
+        <label for="edad">Edad:</label>
+        <input type="number" name="edad" id="edad" required>
+        <br>
+        <label for="sexo">Sexo:</label>
+        <select name="sexo" id="sexo" required>
+            <option value="femenino">Femenino</option>
+            <option value="masculino">Masculino</option>
+        </select>
+        <br>
+        <input type="submit" value="Verificar">
+    </form>
+    <br>
+
+    <?php
+    if (isset($_POST['edad']) && isset($_POST['sexo'])) {
+        $edad = $_POST['edad'];
+        $sexo = $_POST['sexo'];
+        echo verificarEdadSexo($edad, $sexo);
+    }
+    ?>
+
+    <h2>Ejercicio 5</h2>
+    <h3>Buscar por Matrícula</h3>
+    <form action="" method="post">
+        <label for="matricula">Introduce la matrícula:</label>
+        <input type="text" name="matricula" id="matricula">
+        <br>
+        <input type="submit" name="buscarMatricula" value="Buscar por Matrícula">
+    </form>
+
+    <h3>Mostrar Todos los Vehículos</h3>
+    <form action="" method="post">
+        <input type="submit" name="mostrarTodos" value="Mostrar Todos">
+    </form>
+
+    <br>
+    <h2>Resultados:</h2>
+    <?php
+    // Verificar si se ha enviado el formulario de buscar por matrícula
+    if (isset($_POST['buscarMatricula']) && !empty($_POST['matricula'])) {
+        $matricula = $_POST['matricula'];
+        echo '<pre>' . mostrarVehiculoPorMatricula($matricula, $parqueVehicular) . '</pre>';
+    }
+
+    // Verificar si se ha enviado el formulario de mostrar todos los vehículos
+    if (isset($_POST['mostrarTodos'])) {
+        echo '<pre>' . mostrarTodosLosVehiculos($parqueVehicular) . '</pre>';
+    }
+    ?>
+
 </body>
 </html>

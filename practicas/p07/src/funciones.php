@@ -95,4 +95,12 @@ function generarArregloAscii() {
     return $arreglo;
 }
 
+function verificarEdadSexo($edad, $sexo) {
+    if ($sexo == 'femenino' && $edad >= 18 && $edad <= 35) {
+        return '<h3>Bienvenida, usted está en el rango de edad permitido.</h3>';
+    } else {
+        return '<h3>Error: No cumple con los requisitos.</h3>';
+    }
+}
+
 ?>
