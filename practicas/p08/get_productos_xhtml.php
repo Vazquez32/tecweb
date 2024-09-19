@@ -8,7 +8,7 @@
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
-    <h3>Productos con stock menor o igual al tope</h3>
+    <h3>Productos </h3>
 
     <?php
     if (isset($_GET['tope'])) {
