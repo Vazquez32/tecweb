@@ -6,34 +6,30 @@
     <title>Registro de Productos</title>
 </head>
 <body>
-    <h1 style="text-align: center;">Registro de Nuevos Productos</h1>
+    <h1>Registro de Nuevos Productos</h1>
     <form action="set_producto_v2.php" method="POST" enctype="multipart/form-data">
-        <fieldset>
-            <legend>Datos del Producto</legend>
+        <label for="nombre">Nombre:</label> <br>
+        <input type="text" id="nombre" name="nombre" required> <br>
 
-            <label for="nombre">Nombre:</label> <br>
-            <input type="text" id="nombre" name="nombre" required> <br><br>
+        <label for="marca">Marca:</label> <br>
+        <input type="text" id="marca" name="marca" required> <br>
 
-            <label for="marca">Marca:</label> <br>
-            <input type="text" id="marca" name="marca" required> <br><br>
+        <label for="modelo">Modelo:</label> <br>
+        <input type="text" id="modelo" name="modelo" required> <br>
 
-            <label for="modelo">Modelo:</label> <br>
-            <input type="text" id="modelo" name="modelo" required> <br><br>
+        <label for="precio">Precio:</label> <br>
+        <input type="number" id="precio" name="precio" step="0.01" required> <br>
 
-            <label for="precio">Precio:</label> <br>
-            <input type="number" id="precio" name="precio" step="0.01" required> <br><br>
+        <label for="detalles">Detalles:</label><br> 
+        <textarea id="detalles" name="detalles" rows="4" required></textarea><br>
 
-            <label for="detalles">Detalles:</label> <br>
-            <textarea id="detalles" name="detalles" rows="4" required></textarea> <br><br>
+        <label for="unidades">Unidades:</label><br>
+        <input type="number" id="unidades" name="unidades" required><br>
 
-            <label for="unidades">Unidades:</label> <br>
-            <input type="number" id="unidades" name="unidades" required> <br><br>
+        <label for="imagen">Imagen (png):</label><br>
+        <input type="file" id="imagen" name="imagen" accept="image/png, image/jpeg" required><br>
 
-            <label for="imagen">Imagen (png/jpg):</label> <br>
-            <input type="file" id="imagen" name="imagen" accept="image/png, image/jpeg" required> <br><br>
-
-            <button type="submit">Registrar Producto</button>
-        </fieldset>
+        <br> <button type="submit">Registrar Producto</button>
     </form>
 </body>
 </html>
