@@ -48,8 +48,8 @@ if ($result->num_rows > 0) {
     $ruta_imagen = 'img/' . basename($imagen);
     if (move_uploaded_file($_FILES['imagen']['tmp_name'], $ruta_imagen)) {
         // Insertar el nuevo producto en la base de datos con la ruta de la imagen
-        $sql_insert = "INSERT INTO productos (nombre, marca, modelo, precio, detalles, unidades, imagen, eliminado) 
-                       VALUES (?, ?, ?, ?, ?, ?, ?, 0)";
+        $sql_insert = "INSERT INTO productos (nombre, marca, modelo, precio, detalles, unidades, imagen) 
+                       VALUES (?, ?, ?, ?, ?, ?, ?)";
         $stmt_insert = $link->prepare($sql_insert);
         $stmt_insert->bind_param("sssdiss", $nombre, $marca, $modelo, $precio, $detalles, $unidades, $ruta_imagen);
 
