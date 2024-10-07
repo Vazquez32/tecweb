@@ -49,7 +49,7 @@ document.getElementById('formProducto').addEventListener('submit', function(even
 
     // Validar imagen (opcional, establecer imagen por defecto si no se selecciona una)
     if (!imagen) {
-        imagen = 'img/imagen_defecto.png'; // Ruta por defecto
+        imagen = 'img/imagen_defecto.jpg'; // Ruta por defecto
     }
 
     // Si pasa todas las validaciones, limpiar el mensaje de error y proceder
