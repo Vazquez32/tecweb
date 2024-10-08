@@ -1,89 +1,29 @@
-<?php
-
-        // Crear objeto de conexión
-        @$link = new mysqli('localhost', 'root', '12345678a', 'marketzone');
-        if ($link->connect_errno) {
-            die('Falló la conexión: ' . $link->connect_error . '<br/>');
-        }
-
-        // Consulta para obtener productos que no están eliminados
-        if ($result = $link->query("SELECT * FROM productos WHERE eliminado = 0")) {
-            $productos = $result->fetch_all(MYSQLI_ASSOC);
-            $result->free();
-        }
-
-        // Cerramos la conexión
-        $link->close();
-?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es">
 <head>
-    <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
-    <title>Productos disponibles</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
-
-    <script>
-        function show() {
-            // Se obtiene el id de la fila donde está el botón presionado
-            var rowId = event.target.parentNode.parentNode.id;
-
-            // Se obtienen los datos de la fila en forma de arreglo
-            var data = document.getElementById(rowId).querySelectorAll(".row-data");
-
-            // Obtener los valores de cada columna relevante
-            var id = document.getElementById(rowId).querySelector("th").innerHTML;
-            var name = data[0].innerHTML;
-            var brand = data[1].innerHTML;
-            var model = data[2].innerHTML;
-            var price = data[3].innerHTML;
-            var units = data[4].innerHTML;
-            var details = data[5].innerHTML;
-            var image = document.getElementById(rowId).querySelector("img"); // Verificar si existe una imagen
-            var imageUrl = image ? image.src : "";
-
-             // Mostrar una alerta con el nombre del producto
-             alert("Nombre: " + name + " ID: " + id);
-
-            // Llamar a la función para enviar los datos al formulario
-            send2form(id, name, brand, model, price, units, details, imageUrl);
-        }
-
-        function createHiddenInput(name, value) {
-            var input = document.createElement("input");
-            input.type = 'hidden';
-            input.name = name;
-            input.value = value;
-            return input;
-        }
-
-        function send2form(id, name, brand, model, price, units, details, imageUrl) {
-        var form = document.createElement("form");
-        form.method = 'POST';
-        form.action = "http://localhost/tecweb/practicas/p10/formulario_productos_v2.php";
-
-        form.appendChild(createHiddenInput('id', id));
-        form.appendChild(createHiddenInput('nombre', name));
-        form.appendChild(createHiddenInput('marca', brand));
-        form.appendChild(createHiddenInput('modelo', model));
-        form.appendChild(createHiddenInput('precio', price));
-        form.appendChild(createHiddenInput('unidades', units));
-        form.appendChild(createHiddenInput('detalles', details));
-        form.appendChild(createHiddenInput('imagen', imageUrl));
-
-        document.body.appendChild(form);
-        form.submit();
-}
-
-
-    </script>
-
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Productos</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
-    <h3>Productos Dispobibles</h3>
+    <h3>Productos Vigentes</h3>
 
-    <br />
+    <?php
+    /** SE CREA EL OBJETO DE CONEXION */
+    @$link = new mysqli('localhost', 'root', 'root123', 'marketzone');
+    /** NOTA: con @ se suprime el Warning para gestionar el error por medio de código */
 
-    <?php if (isset($productos) && count($productos) > 0) : ?>
-        <table class="table table-striped">
-            <thead class="thead-dark">
+    /** comprobar la conexión */
+    if ($link->connect_errno) {
+        die('Falló la conexión: ' . $link->connect_error . '<br/>');
+    }
+
+    /** Crear una tabla que no devuelve un conjunto de resultados */
+    if ($result = $link->query("SELECT * FROM productos WHERE eliminado = 0")) {
+        echo '<table class="table">';
+        echo '<thead class="thead-dark">
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Nombre</th>
@@ -95,25 +35,30 @@
                     <th scope="col">Imagen</th>
                     <th scope="col">Modificar</th>
                 </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($productos as $index => $producto) : ?>
-                    <tr id="row-<?= $index ?>">
-                    <th scope="row"><?= htmlspecialchars($producto['id']) ?></th>
-                        <td class="row-data"><?= htmlspecialchars($producto['nombre']) ?></td>
-                        <td class="row-data"><?= htmlspecialchars($producto['marca']) ?></td>
-                        <td class="row-data"><?= htmlspecialchars($producto['modelo']) ?></td>
-                        <td class="row-data"><?= htmlspecialchars($producto['precio']) ?></td>
-                        <td class="row-data"><?= htmlspecialchars($producto['unidades']) ?></td>
-                        <td class="row-data"><?= utf8_encode($producto['detalles']) ?></td>
-                        <td><img src="<?= htmlspecialchars($producto['imagen']) ?>" alt="Imagen de <?= htmlspecialchars($producto['nombre']) ?>" style="width:100px;" /></td>
-                        <td><input type="button" value="Modificar" onclick="show()" /></td>
-                    </tr>
-                <?php endforeach; ?>
-            </tbody>
-        </table>
-    <?php else : ?>
-        <p>No se encontraron productos con unidades menores o iguales a <?= htmlspecialchars($tope) ?>.</p>
-    <?php endif; ?>
+              </thead>';
+        echo '<tbody>';
+
+        while ($row = $result->fetch_assoc()) {
+            echo '<tr>';
+            echo '<th scope="row">' . $row['id'] . '</th>';
+            echo '<td>' . $row['nombre'] . '</td>';
+            echo '<td>' . $row['marca'] . '</td>';
+            echo '<td>' . $row['modelo'] . '</td>';
+            echo '<td>' . $row['precio'] . '</td>';
+            echo '<td>' . $row['unidades'] . '</td>';
+            echo '<td>' . utf8_encode($row['detalles']) . '</td>';
+            echo '<td><img src="' . $row['imagen'] . '" alt="Imagen del producto" width="150" height="150" /></td>';
+            // Nueva columna para modificar el producto
+            echo '<td><a href="editar_producto.php?id=' . $row['id'] . '" class="btn btn-primary">Modificar</a></td>';
+            echo '</tr>';
+        }
+
+        echo '</tbody></table>';
+        $result->free();
+    }
+
+    $link->close();
+    ?>
+
 </body>
 </html>
