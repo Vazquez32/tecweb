@@ -1,36 +1,45 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style type="text/css">
-      ol, ul { 
-      list-style-type: none;
-      }
-    </style>
-    <title>Formulario</title>
+    <title>Registro de Productos</title>
+    <script defer src="validaciones.js"></script>
 </head>
 <body>
-    <h1>Datos Personales</h1>
-
-    <form id="miFormulario" onsubmit="" method="post">
+    <h1 style="text-align: center;">Registro de Nuevos Relojes</h1>
+    <form id="formProducto">
         <fieldset>
-            <legend>Actualiza los datos personales de esta persona:</legend>
-            <ul>
-                <li><label>Nombre:</label> 
-                    <input type="text" name="name" 
-                    value="<?= !empty($_POST['nombre']) ? $_POST['nombre'] : (isset($_GET['nombre']) ? $_GET['nombre'] : '') ?>">
-                </li>
-                <li><label>Edad:</label> 
-                    <input type="text" name="age" 
-                    value="<?= !empty($_POST['edad']) ? $_POST['edad'] : (isset($_GET['edad']) ? $_GET['edad'] : '') ?>">
-                </li>
-            </ul>
+            <legend>Datos del Producto</legend>
+
+            <label for="nombre">Nombre:</label> <br>
+            <input type="text" id="nombre" name="nombre" required> <br><br>
+
+            <label for="marca">Marca:</label> <br>
+            <select id="marca" name="marca" required>
+                <option value="">Seleccione una marca</option>
+                <option value="marca1">Casio</option>
+                <option value="marca2">Williv</option>
+            </select> <br><br>
+
+            <label for="modelo">Modelo:</label> <br>
+            <input type="text" id="modelo" name="modelo" required> <br><br>
+
+            <label for="precio">Precio:</label> <br>
+            <input type="number" id="precio" name="precio" step="0.01" required> <br><br>
+
+            <label for="detalles">Detalles:</label> <br>
+            <textarea id="detalles" name="detalles" rows="4"></textarea> <br><br>
+
+            <label for="unidades">Unidades:</label> <br>
+            <input type="number" id="unidades" name="unidades" required> <br><br>
+
+            <label for="imagen">Imagen (png/jpg):</label> <br>
+            <input type="file" id="imagen" name="imagen" accept="image/png, image/jpeg"> <br><br>
+
+            <button type="submit">Registrar Producto</button>
         </fieldset>
-        <p>
-            <input type="submit" value="ENVIAR">
-        </p>
+        <p id="mensajeError" style="color: red;"></p>
     </form>
 </body>
 </html>

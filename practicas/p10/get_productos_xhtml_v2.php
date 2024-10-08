@@ -10,7 +10,7 @@ if ($link->connect_errno) {
 
 /** Crear una tabla que no devuelve un conjunto de resultados */
 if ($result = $link->query("SELECT * FROM productos WHERE eliminado = 0")) {
-    echo '<table class="table">';
+    echo '<table class="table table-hover">';
     echo '<thead class="thead-dark">
             <tr>
                 <th scope="col">#</th>
@@ -36,7 +36,13 @@ if ($result = $link->query("SELECT * FROM productos WHERE eliminado = 0")) {
         echo '<td>' . $row['unidades'] . '</td>';
         echo '<td>' . utf8_encode($row['detalles']) . '</td>';
         echo '<td><img src="' . $row['imagen'] . '" alt="Imagen del producto" width="150" height="150" /></td>';
-        echo '<td><a href="modificarProducto.php?id=' . $row['id'] . '" class="btn btn-primary">Modificar</a></td>';
+        
+        // Botón "Modificar" estilizado con Bootstrap
+        echo '<td>
+                <a href="modificarProducto.php?id=' . $row['id'] . '" class="btn btn-outline-primary btn-lg btn-block">
+                    <i class="fas fa-edit"></i> Modificar
+                </a>
+              </td>';
         echo '</tr>';
     }
 

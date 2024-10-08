@@ -34,7 +34,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $query .= " WHERE id=$id";
 
     if ($link->query($query) === TRUE) {
-        echo "Producto actualizado con éxito.";
+        /** Redirigir a productos vigentes después de la actualización */
+        header("Location: get_productos_vigentes_v2.php");
+        exit(); // Asegurarse de que se detiene la ejecución del script después de la redirección
     } else {
         echo "Error al actualizar el producto: " . $link->error;
     }
