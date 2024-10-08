@@ -49,7 +49,7 @@
             echo '<td>' . utf8_encode($row['detalles']) . '</td>';
             echo '<td><img src="' . $row['imagen'] . '" alt="Imagen del producto" width="150" height="150" /></td>';
             // Nueva columna para modificar el producto
-            echo '<td><a href="modificarProducto.php?id=' . $row['id'] . '" class="btn btn-primary">Modificar</a></td>';
+            echo '<td><a href="formulario_productos_v2.php?id=' . $row['id'] . '" class="btn btn-primary">Modificar</a></td>';
             echo '</tr>';
         }
 
