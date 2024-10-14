@@ -9,12 +9,18 @@
     <!-- BARRA DE NAVEGACIÓN  -->
     <nav>
       <a href="#">Product App</a>
-      
-        <ul></ul>
+
+      <ul></ul>
+      <form>
         <form>
-          <input name="search" id="search" type="search" placeholder="ID">
-          <button type="submit" onclick="buscarID(event)">Buscar</button>
+          <form>
+            <input name="search" id="search" type="search" placeholder="Buscar productos">
+            <button type="submit" onclick="buscarProducto(event)">Buscar</button>
+          </form>
+          
         </form>
+        
+      </form>
     </nav>
 
     <div>
@@ -28,7 +34,7 @@
             <textarea id="description" cols="30" rows="10" placeholder="JSON de producto"></textarea>
           </div>
           <input type="hidden" id="taskId">
-          <button type="submit" onclick="agregarProducto(event)" >
+          <button type="submit" onclick="agregarProducto(event)">
             Agregar Producto
           </button>
         </form>
