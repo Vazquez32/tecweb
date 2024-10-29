@@ -285,6 +285,7 @@ function nombre(nom){
     }else{
         return false;
     }
+    //Se valida el nombre, si es incorrecto la funcion de nombre regresa true,
 }
 function marca(mar){
     let marcas = {
@@ -307,6 +308,7 @@ function modelo(model){
         return false;
     }
 }
+    //Se valida el nombre, si es incorrecto la funcion de nombre regresa true,
 function precio(precio){
     if(Number(precio) < 99.99){
         console.log("Error en precio");
@@ -324,6 +326,7 @@ function detalles(detalles){
     }
     return false;
 }
+//Se valida el nombre, si es incorrecto la funcion de nombre regresa true,
 function unidades(unidades){
     if(Number(unidades) < 0){
         console.log("Error en unidades");
