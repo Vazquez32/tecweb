@@ -225,12 +225,8 @@ function nombre(nom){
 
 function marca(mar){
     let marcas = {
-        "Cheetos":1,
-        "Sabritas":2,
-        "Takis":3,
-        "Chips":4,
-        "Doritos":5,
-        "Ruffles":6
+        "Williv":1,
+        "Casio":2,
     };
     if(marcas[mar] == undefined){
         alert("La marca debe ser valida");
