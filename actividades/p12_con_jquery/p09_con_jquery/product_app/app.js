@@ -1,4 +1,6 @@
 // JSON BASE A MOSTRAR EN FORMULARIO
+// Editamos algo en el JSON base para que se vea en el formulario
+
 var baseJSON = {
     "precio": 0.0,
     "unidades": 1,
