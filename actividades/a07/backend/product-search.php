@@ -35,7 +35,7 @@ namespace backend;
 
 require_once 'myapi/Products.php';
 
-$products = new \backend\myapi\Productos('root', '12345678a', 'marketzone');
+$products = new \backend\myapi\Productos('root', 'root123', 'marketzone');
 $products->search('Producto'); // Reemplaza 'Producto' con el término de búsqueda
 echo $products->getData();
 ?>

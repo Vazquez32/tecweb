@@ -49,7 +49,7 @@ namespace backend;
 
 require_once 'myapi/Products.php';
 
-$products = new \backend\myapi\Productos('root', '12345678a', 'marketzone');
+$products = new \backend\myapi\Productos('root', 'root123', 'marketzone');
 $products->edit((object)['id' => '1', 'name' => 'Producto Editado', 'price' => 150]);
 echo $products->getData();
 ?>

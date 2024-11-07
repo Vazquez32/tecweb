@@ -5,7 +5,7 @@ var baseJSON = {
     "modelo": "XX-000",
     "marca": "NA",
     "detalles": "NA",
-    "imagen": "http://localhost/tecweb/practicas/p09/img/img.png"
+    "imagen": "http://localhost/tecweb_copia/practicas/p09/img/images.png"
 };
 
 function init() {
@@ -175,7 +175,7 @@ $(document).ready(function() {
             // Verifica si la URL de la imagen está vacía
             let imagen = $('#imagen').val();
             if (!imagen) {
-                imagen = "http://localhost/tecweb/practicas/p09/img/img.png"; // URL por defecto
+                imagen = "http://localhost/tecweb/practicas_copia/p09/img/images.png"; // URL por defecto
                 console.log('Se usará la URL de imagen por defecto:', imagen);
             }
 

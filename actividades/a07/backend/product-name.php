@@ -23,7 +23,7 @@ namespace backend;
 
 require_once 'myapi/Products.php';
 
-$products = new \backend\myapi\Productos('root', '12345678a', 'marketzone');
+$products = new \backend\myapi\Productos('root', 'root123', 'marketzone');
 $products->singleByName('NombreProducto'); // Reemplaza 'NombreProducto' con el nombre del producto
 echo $products->getData();
 ?>
