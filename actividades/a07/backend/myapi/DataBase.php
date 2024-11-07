@@ -1,4 +1,6 @@
 <?php
+namespace MyApi;
+
 abstract class DataBase {
     protected $conexion = NULL;
     

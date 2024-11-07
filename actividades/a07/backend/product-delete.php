@@ -4,7 +4,7 @@ use MyApi\Products;
 
     include_once __DIR__.'/myapi/Products.php';
 
-    $p = new Products('root', '12345678a', 'marketzone');
+    $p = new Products('root', 'root123', 'marketzone');
 
     if (isset($_POST['id'])) {
         $p->delete($_POST['id']);

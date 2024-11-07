@@ -4,7 +4,7 @@ use MyApi\Products;
 
     include_once __DIR__.'/myapi/Products.php';
 
-    $products = New Products('root', '12345678a', 'marketzone');
+    $products = New Products('root', 'root123', 'marketzone');
 
     $products->add(file_get_contents('php://input'));
 

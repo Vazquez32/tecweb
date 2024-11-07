@@ -6,7 +6,7 @@ require_once 'DataBase.php';
 class Products extends DataBase{
     private $response = [];
     
-    public function __construct($user = 'root', $pass = 'root123', $db = 'marketzone') {
+    public function __construct($user = 'root', $pass = 'roo123', $db = 'marketzone') {
         parent::__construct($user, $pass, $db);
     }
 
@@ -182,7 +182,10 @@ class Products extends DataBase{
         }
     }
 
-    public function single($string = _GET['id']){
+    public function single($string = null){
+        if ($string === null) {
+            $string = $_GET['id'];
+        }
         // Inicializamos el arreglo para almacenar los datos
         $this->response = array(
             'status'  => 'error',
@@ -221,7 +224,10 @@ class Products extends DataBase{
         }
     }
 
-    public function singleByName($string= _GET['name']){
+    public function singleByName($string = null){
+        if ($string === null) {
+            $string = $_GET['name'];
+        }
         // Inicializamos el arreglo para almacenar los datos
         $this->response = array(
             'status'  => 'error',
