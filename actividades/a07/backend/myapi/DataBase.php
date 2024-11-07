@@ -1,21 +1,19 @@
 <?php
-namespace backend\myapi;
-
 abstract class DataBase {
-    protected $conexion;
+    protected $conexion = NULL;
+    
+    public function __construct($user,$pass,$db) {
+        $this->conexion = @mysqli_connect(
+            'localhost',
+            $user,
+            $pass,
+            $db
+        );
 
-    public function __construct() {
-        $host = 'localhost';
-        $user = 'root';
-        $pass = '12345678a';
-        $db = 'marketzone';
-
-        $this->conexion = new \mysqli($host, $user, $pass, $db);
-
-        if ($this->conexion->connect_error) {
-            die("Error de conexión: " . $this->conexion->connect_error);
+        // Si la conexión falló contendrá false
+        if (!$this->conexion) {
+            die('Error de conexión (' . mysqli_connect_errno() . ') ' . mysqli_connect_error());
         }
     }
-
-    abstract protected function query(string $sql);
 }
+?>
