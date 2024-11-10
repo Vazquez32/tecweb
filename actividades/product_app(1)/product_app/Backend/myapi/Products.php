@@ -9,7 +9,7 @@ class Products extends DataBase {
 
     // Constructor de Products
     public function __construct($host, $user, $password, $dbName) {
-        $config = ['host' => $host, 'user' => $user, 'password' => $password, 'dbname' => $dbName];
+        $config = ['host' => $host, 'user' => $user, 'password' => $password, 'dbName' => $dbName];
         parent::__construct($config);
     }
 
@@ -20,6 +20,7 @@ class Products extends DataBase {
             "sdisss" => [$product->name, $product->price, $product->units, $product->model, $product->brand, $product->details]
         ]);
     }
+    
 
     // Método para eliminar un producto por su ID
     public function delete($productId) {
@@ -28,10 +29,11 @@ class Products extends DataBase {
             "i" => [$productId] // El tipo "i" indica que el ID es un entero
         ]);
     }
+    
 
     // Método para editar un producto
     public function edit($product) {
-        $sql = "UPDATE productos SET nombre = ?, precio = ?, descripcion = ? WHERE id = ?";
+        $sql = "UPDATE productos SET name = ?, price = ?, description = ? WHERE id = ?";
         $this->executeQuery($sql, ["sssi" => [$product->name, $product->price, $product->description, $product->id]]);
     }
 
@@ -43,7 +45,7 @@ class Products extends DataBase {
 
     // Método para buscar productos que coincidan con un término
     public function search($term) {
-        $sql = "SELECT * FROM productos WHERE nombre LIKE ?";
+        $sql = "SELECT * FROM productos WHERE name LIKE ?";
         $this->data = $this->executeQuery($sql, ["s" => ["%$term%"]]);
     }
 
@@ -55,21 +57,18 @@ class Products extends DataBase {
 
     // Método para obtener un solo producto por nombre
     public function singleByName($name) {
-        $sql = "SELECT * FROM productos WHERE nombre = ?";
+        $sql = "SELECT * FROM productos WHERE name = ?";
         $this->data = $this->executeQuery($sql, ["s" => [$name]]);
     }
 
     // Método para convertir los datos en JSON
     public function getData() {
-        return json_encode($this->data); // Convertir a JSON
+        return $this->data; // Asegúrate de que $this->response es un arreglo y no un JSON codificado
     }
 
     // Implementación del método de consulta genérico
     protected function executeQuery($sql, $params = []) {
         $stmt = $this->conexion->prepare($sql);
-        if ($stmt === false) {
-            throw new \Exception('Error en la preparación de la consulta: ' . $this->conexion->error);
-        }
 
         // Vinculamos los parámetros si se proporcionan
         if (!empty($params)) {
@@ -79,11 +78,8 @@ class Products extends DataBase {
         }
 
         $stmt->execute();
-        if ($stmt->error) {
-            throw new \Exception('Error en la ejecución de la consulta: ' . $stmt->error);
-        }
-
         $result = $stmt->get_result();
+
         $data = $result ? $result->fetch_all(MYSQLI_ASSOC) : [];
         $stmt->close();
 

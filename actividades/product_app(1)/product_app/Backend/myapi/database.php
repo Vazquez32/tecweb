@@ -1,30 +1,23 @@
 <?php
 namespace Backend;
 
-class DataBase {
+abstract class DataBase {
     protected $conexion;
 
     public function __construct($config) {
-        // Verificar que las claves existan en el array
-        if (isset($config['host'], $config['user'], $config['password'], $config['dbname'])) {
-            $this->connect($config);
-        } else {
-            throw new Exception("Faltan parámetros en la configuración de la base de datos.");
-        }
+        $this->conexion = $this->connect($config);
     }
 
-    // Método para conectarse a la base de datos
-    public function connect($config) {
-        $this->conexion = new mysqli(
-            $config['host'], 
-            $config['user'], 
-            $config['password'], 
-            $config['dbname']
-        );
+    private function connect($config) {
+        // Usa \mysqli para referenciar la clase global de PHP y evitar conflictos de espacio de nombres
+        $conexion = new \mysqli($config['host'], $config['user'], $config['password'], $config['dbName']);
 
-        if ($this->conexion->connect_error) {
-            die('Error de conexión (' . $this->conexion->connect_errno . ') ' . $this->conexion->connect_error);
+        if ($conexion->connect_error) {
+            die("Error de conexión a la base de datos: " . $conexion->connect_error);
         }
+        return $conexion;
     }
+
+    abstract protected function executeQuery($sql, $params = []);
 }
 ?>
