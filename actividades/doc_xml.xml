@@ -1,0 +1,101 @@
+<CatalogoVOD>
+    <cuenta>
+        <correo>olivamemo@gmail.com</correo>
+        <perfiles>
+            <perfil>
+                <usuario>Usuario Oro</usuario>
+                <idioma>Español</idioma>
+            </perfil>
+            <perfil>
+                <usuario>User Gold</usuario>
+                <idioma>Inglés</idioma>
+            </perfil>
+        </perfiles>
+    </cuenta>
+    <contenido>
+        <peliculas>
+             <!-- Primer género de películas -->
+            <genero>
+                <nombre>Acción</nombre>
+                <titulo>
+                    <nombre>La vivora ahorcadora</nombre>
+                    <duracion>120</duracion>
+                </titulo>
+                <titulo>
+                    <nombre>Ahorcame si puedes</nombre>
+                    <duracion>69</duracion>
+                </titulo>
+                <titulo>
+                    <nombre>Ahorcame si puedes 2: Ahora es personal</nombre>
+                    <duracion>98</duracion>
+                </titulo>
+                <titulo>
+                    <nombre>Clash Royale la pelicula</nombre>
+                    <duracion>190</duracion>
+                </titulo>
+            </genero>
+            <!-- Segundo género de películas -->
+            <genero>
+                <nombre>Comedia</nombre>
+                <titulo>
+                    <nombre>Ella y yo</nombre>
+                    <duracion>90</duracion>
+                </titulo>
+                <titulo>
+                    <nombre>Dos locos en una aventura castigada por Dios</nombre>
+                    <duracion>85</duracion>
+                </titulo>
+                <titulo>
+                    <nombre>Y aunque tiene dueño, yo solo tengo un sueño, ser su protector</nombre>
+                    <duracion>110</duracion>
+                </titulo>
+                <titulo>
+                    <nombre>No lo hagas no, ay nonono!</nombre>
+                    <duracion>95</duracion>
+                </titulo>
+            </genero>
+        </peliculas>
+        
+
+        <programas>
+            <genero>
+                <nombre>Drama</nombre>
+                <titulo>
+                    <nombre>Mi novia ve un like donde no era</nombre>
+                    <duracion>45</duracion>
+                </titulo>
+                <titulo>
+                    <nombre>Te veo</nombre>
+                    <duracion>50</duracion>
+                </titulo>
+                <titulo>
+                    <nombre>El hoyo</nombre>
+                    <duracion>42</duracion>
+                </titulo>
+                <titulo>
+                    <nombre>El juego de mi calamar</nombre>
+                    <duracion>48</duracion>
+                </titulo>
+            </genero>
+            <genero>
+                <nombre>Documental</nombre>
+                <titulo>
+                    <nombre>Criptoestafa</nombre>
+                    <duracion>60</duracion>
+                </titulo>
+                <titulo>
+                    <nombre>Adicciones la pelicula</nombre>
+                    <duracion>55</duracion>
+                </titulo>
+                <titulo>
+                    <nombre>La fiesta de las metanfetaminas </nombre>
+                    <duracion>58</duracion>
+                </titulo>
+                <titulo>
+                    <nombre>Mientras yo viva tú</nombre>
+                    <duracion>62</duracion>
+                </titulo>
+            </genero>
+        </programas>
+    </contenido>
+</CatalogoVOD>

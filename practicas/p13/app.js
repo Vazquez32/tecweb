@@ -383,7 +383,7 @@ function nombre(nom,edit){
 
 function marca(mar){
     let marcas = {
-        "Williv":1,
+        "Williv" :1,
         "Casio":2,
 
     };

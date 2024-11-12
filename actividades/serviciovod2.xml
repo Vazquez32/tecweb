@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CatalogoVOD>
+    <cuenta correo="usuario@example.com">
+        <perfil usuario="Usuario1" idioma="español" />
+        <perfil usuario="Usuario2" idioma="inglés" />
+    </cuenta>
+    <contenido>
+        <peliculas>
+            <genero nombre="Acción">
+                <titulo nombre="Película 1" duracion="120" />
+                <titulo nombre="Película 2" duracion="90" />
+                <titulo nombre="Película 3" duracion="105" />
+                <titulo nombre="Película 4" duracion="110" />
+            </genero>
+            <genero nombre="Drama">
+                <titulo nombre="Película 5" duracion="115" />
+                <titulo nombre="Película 6" duracion="100" />
+                <titulo nombre="Película 7" duracion="130" />
+                <titulo nombre="Película 8" duracion="95" />
+            </genero>
+        </peliculas>
+        <programas>
+            <genero nombre="Comedia">
+                <titulo nombre="Programa 1" duracion="45" />
+                <titulo nombre="Programa 2" duracion="30" />
+                <titulo nombre="Programa 3" duracion="60" />
+                <titulo nombre="Programa 4" duracion="40" />
+            </genero>
+            <genero nombre="Documental">
+                <titulo nombre="Programa 5" duracion="50" />
+                <titulo nombre="Programa 6" duracion="55" />
+                <titulo nombre="Programa 7" duracion="47" />
+                <titulo nombre="Programa 8" duracion="65" />
+            </genero>
+        </programas>
+    </contenido>
+</CatalogoVOD>
